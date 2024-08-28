@@ -1,0 +1,25 @@
+type Result_1 = 
+ variant {
+   err: text;
+   ok: Note;
+ };
+type Result = 
+ variant {
+   err: text;
+   ok;
+ };
+type Note = 
+ record {
+   category: opt text;
+   content: text;
+   id: nat;
+ };
+service : {
+  addCategory: (text) -> (Result);
+  createNote: (opt text, text) -> (nat);
+  deleteNote: (nat) -> (Result);
+  getCategories: () -> (vec text) query;
+  getNotes: () -> (vec Note) query;
+  readNote: (nat) -> (Result_1) query;
+  updateNote: (nat, text) -> (Result);
+}
